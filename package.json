@@ -1,0 +1,9 @@
+{
+  "name": "confirmacao-formatura",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "22.x" },
+  "scripts": {
+    "dev": "node server.js"
+  }
+}

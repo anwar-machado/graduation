@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f2f2f7" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Festa de Formatura</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <main class="card" id="card">
+    <img class="hero" src="hero.svg" alt="Ilustração de capelo de formatura com diploma e confetes" />
+    <span class="eyebrow">Você está convidado</span>
+    <h1>Festa de Formatura</h1>
+    <p class="sub">Vem comemorar essa conquista com a gente! Confirme sua presença abaixo.</p>
+
+    <label class="field-label" for="name">Seu nome</label>
+    <input type="text" id="name" placeholder="Ex.: Maria Silva" maxlength="60" autocomplete="name" />
+
+    <!-- Armadilha para bots: invisível para pessoas, robôs costumam preencher -->
+    <div class="hp" aria-hidden="true">
+      <label for="website">Não preencha</label>
+      <input type="text" id="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="buttons">
+      <button class="btn yes" id="btnYes">Confirmar presença</button>
+      <button class="btn no" id="btnNo">Não poderei ir</button>
+    </div>
+
+    <p class="status" id="status" role="status"></p>
+  </main>
+
+  <!-- Painel que sobe ao responder -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+      <svg class="badge" id="badge" viewBox="0 0 100 100" aria-hidden="true">
+        <path class="shape" id="badgeShape" />
+        <path class="check" id="badgeIcon" d="M33 51 L45 63 L68 39" />
+      </svg>
+      <h2 id="sheetTitle">Presença confirmada!</h2>
+      <p id="sheetText">Te esperamos na festa.</p>
+      <button class="btn dark" id="btnDone">Pronto</button>
+    </div>
+  </div>
+
+  <script src="confetti.js"></script>
+  <script src="rsvp.js"></script>
+</body>
+</html>
