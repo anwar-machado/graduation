@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#f2f2f7" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Festa de Formatura</title>
+  <title>Festa de Graduação</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <canvas id="confetti"></canvas>
 
   <main class="card" id="card">
-    <img class="hero" src="hero.svg" alt="Ilustração de capelo de formatura com diploma e confetes" />
-    <span class="eyebrow">Você está convidado</span>
-    <h1>Festa de Formatura</h1>
-    <p class="sub">Vem comemorar essa conquista com a gente! Confirme sua presença abaixo.</p>
+    <img class="hero" src="hero.svg" alt="Ilustração de um capelo de graduação com diploma e confetti" />
+    <span class="eyebrow">Contamos contigo!</span>
+    <h1>Festa de Graduação</h1>
+    <p class="sub">Vem celebrar esta conquista connosco! Confirma a tua presença aqui em baixo.</p>
 
-    <label class="field-label" for="name">Seu nome</label>
+    <label class="field-label" for="name">O teu nome</label>
     <input type="text" id="name" placeholder="Ex.: Maria Silva" maxlength="60" autocomplete="name" />
 
     <!-- Armadilha para bots: invisível para pessoas, robôs costumam preencher -->
     <div class="hp" aria-hidden="true">
-      <label for="website">Não preencha</label>
+      <label for="website">Não preencher</label>
       <input type="text" id="website" tabindex="-1" autocomplete="off" />
     </div>
 
     <div class="buttons">
       <button class="btn yes" id="btnYes">Confirmar presença</button>
-      <button class="btn no" id="btnNo">Não poderei ir</button>
+      <button class="btn no" id="btnNo">Não vou poder ir</button>
     </div>
 
     <p class="status" id="status" role="status"></p>
@@ -42,8 +42,8 @@
         <path class="check" id="badgeIcon" d="M33 51 L45 63 L68 39" />
       </svg>
       <h2 id="sheetTitle">Presença confirmada!</h2>
-      <p id="sheetText">Te esperamos na festa.</p>
-      <button class="btn dark" id="btnDone">Pronto</button>
+      <p id="sheetText">Esperamos por ti na festa.</p>
+      <button class="btn dark" id="btnDone">Fechar</button>
     </div>
   </div>
 

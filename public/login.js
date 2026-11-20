@@ -21,7 +21,7 @@ $("showPass").addEventListener("click", () => {
   const show = pass.type === "password";
   pass.type = show ? "text" : "password";
   $("showPass").textContent = show ? "Ocultar" : "Mostrar";
-  $("showPass").setAttribute("aria-label", show ? "Ocultar senha" : "Mostrar senha");
+  $("showPass").setAttribute("aria-label", show ? "Ocultar palavra-passe" : "Mostrar palavra-passe");
 });
 
 ["user", "pass"].forEach((id) => $(id).addEventListener("input", () => $(id).classList.remove("shake")));
@@ -30,11 +30,11 @@ $("form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const user = $("user").value.trim();
   const pass = $("pass").value;
-  if (!user) return fail("Digite o usuário", "user");
-  if (!pass) return fail("Digite a senha", "pass");
+  if (!user) return fail("Escreve o utilizador", "user");
+  if (!pass) return fail("Escreve a palavra-passe", "pass");
 
   $("btnLogin").disabled = true;
-  $("status").textContent = "Entrando...";
+  $("status").textContent = "A entrar...";
   try {
     const res = await fetch("/api/login", {
       method: "POST",
@@ -49,7 +49,7 @@ $("form").addEventListener("submit", async (e) => {
     $("pass").value = "";
     fail(data.error || "Não foi possível entrar.", "pass");
   } catch {
-    $("status").textContent = "Sem conexão. Tente novamente.";
+    $("status").textContent = "Sem ligação. Tenta novamente.";
   } finally {
     $("btnLogin").disabled = false;
   }

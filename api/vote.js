@@ -14,7 +14,7 @@ export const POST = handler(async (request) => {
   const ip = clientIp(request);
   if (await hitLimit("vote", ip, VOTE_LIMIT)) {
     log("Limite de respostas atingido");
-    return json(429, { error: "Muitas respostas seguidas. Aguarde alguns minutos." });
+    return json(429, { error: "Demasiadas respostas seguidas. Aguarda alguns minutos." });
   }
 
   const { body, error } = await readJson(request);
@@ -27,12 +27,12 @@ export const POST = handler(async (request) => {
   }
 
   const name = cleanName(body.name);
-  if (!name) return json(400, { error: "Nome inválido. Use só letras, espaços, hífen ou apóstrofo." });
+  if (!name) return json(400, { error: "Nome inválido. Usa apenas letras, espaços, hífen ou apóstrofo." });
   if (typeof body.going !== "boolean") return json(400, { error: "Resposta inválida." });
 
   if (!(await saveVote(name, body.going))) {
-    return json(503, { error: "Limite de respostas atingido. Fale com o organizador." });
+    return json(503, { error: "Limite de respostas atingido. Fala com o organizador." });
   }
-  log(`Resposta registrada (${body.going ? "vai" : "não vai"})`);
+  log(`Resposta registada (${body.going ? "vai" : "não vai"})`);
   return json(200, { ok: true });
 });

@@ -34,7 +34,7 @@ function render() {
   list.replaceChildren();
 
   if (!items.length) {
-    list.append(el("li", "empty", "Ninguém por aqui ainda."));
+    list.append(el("li", "empty", "Ainda não há ninguém aqui."));
     return;
   }
   for (const v of items) {
@@ -42,7 +42,7 @@ function render() {
     li.append(
       el("span", `avatar ${v.going ? "yes" : "no"}`, initials(v.name)),
       el("span", "name", v.name),
-      el("span", "when", new Date(v.updatedAt).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" }))
+      el("span", "when", new Date(v.updatedAt).toLocaleString("pt-PT", { dateStyle: "short", timeStyle: "short" }))
     );
     list.append(li);
   }
@@ -72,10 +72,10 @@ async function refresh() {
     data = await res.json();
     render();
     $("live").classList.add("on");
-    $("liveText").textContent = "Ao vivo";
+    $("liveText").textContent = "Em direto";
   } catch {
     $("live").classList.remove("on");
-    $("liveText").textContent = "Reconectando...";
+    $("liveText").textContent = "A ligar novamente...";
   }
   if (!document.hidden) timer = setTimeout(refresh, POLL_MS);
 }

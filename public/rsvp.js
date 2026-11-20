@@ -27,8 +27,8 @@ function openSheet(going, name) {
   $("badgeIcon").setAttribute("d", going ? "M33 51 L45 63 L68 39" : "M36 50 L64 50");
   $("sheetTitle").textContent = going ? "Presença confirmada!" : "Que pena!";
   $("sheetText").textContent = going
-    ? `Oba, ${first}! Sua presença foi registrada. Te esperamos na festa! 🎓`
-    : `Obrigado por avisar, ${first}. Se mudar de ideia, é só voltar aqui.`;
+    ? `Boa, ${first}! A tua presença ficou registada. Esperamos por ti na festa! 🎓`
+    : `Obrigado por avisares, ${first}. Se mudares de ideias, é só voltar aqui.`;
 
   $("overlay").classList.add("open");
   $("overlay").setAttribute("aria-hidden", "false");
@@ -51,13 +51,13 @@ function invalid(message) {
 
 async function vote(going) {
   const name = nameInput.value.replace(/\s+/g, " ").trim();
-  if (!name) return invalid("Digite seu nome para continuar");
+  if (!name) return invalid("Escreve o teu nome para continuar");
   if (name.length < 2 || !NAME_RE.test(name)) {
-    return invalid("Use só letras, espaços, hífen ou apóstrofo no nome");
+    return invalid("Usa apenas letras, espaços, hífen ou apóstrofo no nome");
   }
 
   $("btnYes").disabled = $("btnNo").disabled = true;
-  $("status").textContent = "Enviando...";
+  $("status").textContent = "A enviar...";
   try {
     const res = await fetch("/api/vote", {
       method: "POST",
@@ -66,15 +66,15 @@ async function vote(going) {
     });
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      $("status").textContent = data.error || "Não foi possível enviar. Tente novamente.";
+      $("status").textContent = data.error || "Não foi possível enviar. Tenta novamente.";
       return;
     }
 
-    $("status").textContent = "Vai responder por mais alguém? É só digitar outro nome.";
+    $("status").textContent = "Vais responder por mais alguém? Basta escrever outro nome.";
     nameInput.value = "";
     openSheet(going, name);
   } catch {
-    $("status").textContent = "Sem conexão. Verifique a internet e tente novamente.";
+    $("status").textContent = "Sem ligação. Verifica a internet e tenta novamente.";
   } finally {
     $("btnYes").disabled = $("btnNo").disabled = false;
   }
