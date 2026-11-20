@@ -1,4 +1,4 @@
-// Servidor LOCAL que imita a Vercel, para testar no seu computador: node server.js
+// Servidor LOCAL que imita a Vercel, para testar no seu computador: node local-server.js
 // Na Vercel este arquivo não é usado (lá as páginas vêm de public/ e as funções de api/).
 import http from "node:http";
 import fs from "node:fs";
